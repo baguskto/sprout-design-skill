@@ -8,7 +8,9 @@ REPO_URL="https://github.com/baguskto/sprout-design-skill.git"
 command -v git >/dev/null || { echo "git required"; exit 1; }
 
 if [ -d "$SKILL_DIR" ]; then
-  BACKUP="$SKILL_DIR.backup-$(date +%Y%m%d_%H%M%S)"
+  BACKUP_DIR="$HOME/.claude/skills-backups"
+  mkdir -p "$BACKUP_DIR"
+  BACKUP="$BACKUP_DIR/$SKILL_NAME.backup-$(date +%Y%m%d_%H%M%S)"
   echo "Existing install found, backing up to $BACKUP"
   mv "$SKILL_DIR" "$BACKUP"
 fi
